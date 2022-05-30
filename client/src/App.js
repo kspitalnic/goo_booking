@@ -1,24 +1,20 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Home from './booking/Home';
-import Login from './auth/Login';
-import Register from './auth/Register'; 
-import { Link } from 'react-router-dom'; 
+// import those pages in App.js
+// then based on the path show each components using react-router components
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Home from "./booking/Home";
+import Login from "./auth/Login";
+import Register from "./auth/Register";
+import TopNav from "./components/TopNav";
 
-
-// create navigation 
-const TopNav = () => (
-  <div className="nav bg-light d-flex justify-content-between">
-    <Link className="nav-link" to="/">Home</Link>
-    <Link className="nav-link" to="/login">Login</Link>
-    <Link className="nav-link" to="/register">Register</Link>
-  </div>
-)
-
+/**
+ * Lets create TopNavigation/menu bar so that we can easily TopNavigate between pages
+ * lets write it in App.js before we move it to its own component
+ */
 
 function App() {
   return (
     <BrowserRouter>
-    <TopNav />
+      <TopNav />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
