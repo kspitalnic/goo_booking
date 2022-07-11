@@ -8,13 +8,15 @@ require('dotenv').config();
 const app = express();
 
 // db connection 
+
+// const connectionParams = {
+//   useNewUrlParser: true,
+//   useFindAndModify: false, 
+//   useUnifiedTopology: true,
+//   useCreateIndex: true,
+// }
 mongoose
-  .connect(process.env.DATABASE, {
-      useNewUrlParser: true,
-      useFindAndModify: false, 
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-  })
+  .connect(process.env.DATABASE)
   .then(() => console.log("DB connected"))
   .catch((err) => console.log("DB Error => ", err));
 
