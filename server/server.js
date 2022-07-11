@@ -8,7 +8,6 @@ require('dotenv').config();
 const app = express();
 
 // db connection 
-
 // const connectionParams = {
 //   useNewUrlParser: true,
 //   useFindAndModify: false, 
