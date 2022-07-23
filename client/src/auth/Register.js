@@ -1,10 +1,10 @@
 import {useState} from 'react';
 import RegisterForm from '../components/RegisterForm';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
-const Register = () => {
+
+const Register = ({ history }) => {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -14,13 +14,14 @@ const Register = () => {
         e.preventDefault();
         // console.table({ name, email, password });
         try {
-            const res = await axios.post(`http://localhost:8000/api/register`, {
+            const res = await axios.post(`${process.env.REACT_APP_API}/register`, {
                 name, 
                 email, 
                 password
             });
             console.log('REGISTER USER ===>', res);
             toast.success('Register success. Please log in')
+            history.push("/login");
         } catch (err) {
             console.log(err); 
             if(err.response.status === 400) toast.error(err.response.data);
@@ -34,7 +35,7 @@ const Register = () => {
             <h1>Register</h1>
         </div>
 
-        <ToastContainer />
+       
 
         <div className="container">
             <div className="row">
